@@ -1,2 +1,15 @@
 application/javascript
-(function(){if(/(^|\.)twitch\.tv$/['test'](document['location']['hostname'])===![]){return;}var _0x2d7b26=window['fetch'];window['fetch']=function(_0x366c4b,_0x4eec65){if(arguments['length']>=0x2&&typeof _0x366c4b==='string'&&_0x366c4b['includes']('/access_token')){var _0x3eb6c5=new URL(arguments[0x0]);_0x3eb6c5['searchParams']['forEach'](function(_0x15783d,_0x8416dc){_0x3eb6c5['searchParams']['delete'](_0x8416dc);});arguments[0x0]=_0x3eb6c5['href'];}return _0x2d7b26['apply'](this,arguments);};}());
+(function() {
+	if ( /(^|\.)twitch\.tv$/.test(document.location.hostname) === false ) { return; }
+	var realFetch = window.fetch;
+	window.fetch = function(input, init) {
+		if ( arguments.length >= 2 && typeof input === 'string' && input.includes('/access_token') ) {
+			var url = new URL(arguments[0]);
+                        url.searchParams.forEach(function(value, key) {
+                            url.searchParams.delete(key);
+                        });
+			arguments[0] = url.href;
+		}
+		return realFetch.apply(this, arguments);
+	};
+})();
