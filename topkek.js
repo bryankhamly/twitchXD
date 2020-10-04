@@ -1,4 +1,4 @@
-application/javascript
+topkek.js application/javascript
 (function() {
 	if ( /(^|\.)twitch\.tv$/.test(document.location.hostname) === false ) { return; }
 	var realFetch = window.fetch;
